@@ -14,7 +14,7 @@ radius = 21.095
 script = ExtResource("4_3ei18")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-collision_mask = 12
+collision_mask = 28
 script = ExtResource("1_18pux")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh2njt6yy7c3w"]
+
+[ext_resource type="Texture2D" uid="uid://wnmo3pudt85a" path="res://ShmupSprites/Background_ingame.png" id="1_ugcmc"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BackgroundIngame" type="Sprite2D" parent="."]
+texture = ExtResource("1_ugcmc")
