@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://do6kop0eckme6"]
+
+[ext_resource type="Texture2D" uid="uid://dcspoxf2rr0vq" path="res://ShmupSprites/Bullet_player.png" id="1_4mmog"]
+
+[node name="PlayerBullet" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_4mmog")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+build_mode = 1
+polygon = PackedVector2Array(0, -8, -4, -8, -4, 8, 4, 8, 4, -8)

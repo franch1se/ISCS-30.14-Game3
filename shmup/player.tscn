@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkw73h3cmngrl"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_18pux"]
+[ext_resource type="Texture2D" uid="uid://b0n7pw58f38oe" path="res://ShmupSprites/Player.png" id="2_lk3qc"]
+[ext_resource type="Texture2D" uid="uid://d3uqlgw2x3xwm" path="res://ShmupSprites/crosshair158.png" id="3_i4og7"]
+
+[node name="Player" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_18pux")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_lk3qc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(-29, 28, -14, 20, -10, 27, 0, 22, 10, 27, 14, 20, 28, 29, 39, 19, 31, 11, 33, 9, 17, -8, 14, -7, 11, -19, 0, -28, -11, -20, -14, -8, -17, -8, -33, 8, -31, 11, -38, 19)
+
+[node name="Crosshair" type="Sprite2D" parent="."]
+position = Vector2(144, 4)
+texture = ExtResource("3_i4og7")
