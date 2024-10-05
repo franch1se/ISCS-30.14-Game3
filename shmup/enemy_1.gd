@@ -19,11 +19,11 @@ func _physics_process(delta: float) -> void:
 	
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player_bullet"):
-		print("Enemy hp: ", hp)
+		#print("Enemy hp: ", hp)
 		hp -= 1
 		var impact = impact_scene.instantiate()
 		impact.position = area.get_child(0).position
-		print("AREA POS: ", area.get_child(0).position)
+		#print("AREA POS: ", area.get_child(0).position)
 		add_child(impact)
 		area.queue_free()
 		

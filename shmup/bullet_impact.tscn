@@ -69,4 +69,6 @@ animations = [{
 
 [node name="BulletImpact" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_w81bc")
+frame = 7
+frame_progress = 1.0
 script = ExtResource("2_bjngq")

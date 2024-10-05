@@ -6,6 +6,7 @@ extends CharacterBody2D
 const MAX_SPEED = 600 # for both x and y
 const NORMAL_SPEED = 30
 const DEC_SPEED = 20
+const BORDER_LIMIT = 470
 
 var hp = 100
 
@@ -25,6 +26,8 @@ func _physics_process(delta: float) -> void:
 	crosshair.rotation = rotation
 	
 	move_and_slide()
+	position.x = clamp(position.x, -BORDER_LIMIT, BORDER_LIMIT)
+	position.y = clamp(position.y, -BORDER_LIMIT, BORDER_LIMIT)
 	
 func move(dx, dy):
 	if dx:
