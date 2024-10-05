@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://enemy_1.gd" id="1_bp65x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mk2ty"]
-size = Vector2(65, 60)
+size = Vector2(77, 94)
 
 [node name="Enemy1" type="Node2D"]
 script = ExtResource("1_bp65x")
@@ -20,3 +20,4 @@ collision_mask = 3
 shape = SubResource("RectangleShape2D_mk2ty")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

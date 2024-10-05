@@ -7,11 +7,12 @@ const MAX_SPEED = 600 # for both x and y
 const NORMAL_SPEED = 30
 const DEC_SPEED = 20
 
+var hp = 100
+
 func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	
 	# Handle movement
 	var direction_x = Input.get_axis("left", "right")
 	var direction_y = Input.get_axis("up", "down")
@@ -22,8 +23,6 @@ func _physics_process(delta: float) -> void:
 	rotation = atan2(mouse_coor.y - position.y, mouse_coor.x - position.x) + deg_to_rad(90)
 	crosshair.position = mouse_coor
 	crosshair.rotation = rotation
-	
-	
 	
 	move_and_slide()
 	
