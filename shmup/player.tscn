@@ -24,7 +24,7 @@ texture = ExtResource("2_lk3qc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_2mmns")
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D" groups=["player_sprite"]]
+[node name="Area2D" type="Area2D" parent="CharacterBody2D" groups=["player"]]
 collision_mask = 12
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D/Area2D"]

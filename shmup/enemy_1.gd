@@ -5,15 +5,23 @@ extends Area2D
 @export var deathParticle : PackedScene = load("res://particles.tscn")
 @onready var explosionSFX = $explosionSFX
 
+@export var bullet_scene : PackedScene = load("res://enemy_bullet.tscn")
+@onready var bullet_timer : Timer = $BulletTimer
 
-@export var hp := 20
+
+@export var hp := 50
+var speed := 80.0
+var rot_speed := 3.0
+var bullet_count := 18
+var direction = 1
 
 func _ready() -> void:
-	pass # Replace with function body.
+	bullet_timer.start()
 
 
 func _physics_process(delta: float) -> void:
-	position.x -= delta*5 # to be deleted
+	position.x += speed*delta*direction
+	rotation += rot_speed*delta
 	
 	# Process hp
 	if hp <= 0:
@@ -30,4 +38,18 @@ func kill():
 	get_tree().current_scene.add_child(_particle)
 	explosionSFX.play()
 	
+	queue_free()
+
+
+func _on_timer_timeout() -> void:
+	#print("BOOM BULLET")
+	for i in range(bullet_count):
+		var bullet = bullet_scene.instantiate()
+		bullet.position = global_position
+		bullet.rotation = deg_to_rad(i*(360/bullet_count))
+		get_parent().add_child(bullet)
+		bullet_timer.start()
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()

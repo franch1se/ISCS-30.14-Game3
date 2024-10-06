@@ -1,17 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://p0ith0ky4lb6"]
+[gd_scene load_steps=4 format=3 uid="uid://p0ith0ky4lb6"]
 
 [ext_resource type="PackedScene" uid="uid://dh2njt6yy7c3w" path="res://MARCUSMAP.tscn" id="1_eo2p6"]
 [ext_resource type="PackedScene" uid="uid://bkw73h3cmngrl" path="res://player.tscn" id="1_g6r7u"]
-[ext_resource type="PackedScene" uid="uid://dus36y5c45x7i" path="res://enemy_1.tscn" id="2_5hetx"]
-[ext_resource type="PackedScene" uid="uid://dppxbfdqvfwbm" path="res://particles.tscn" id="3_pmkls"]
+[ext_resource type="PackedScene" uid="uid://coyb1jnfla7o0" path="res://enemy_spawner.tscn" id="2_diauc"]
 
 [node name="Main" type="Node2D"]
 
 [node name="map" parent="." instance=ExtResource("1_eo2p6")]
 
-[node name="Enemy1" parent="." instance=ExtResource("2_5hetx")]
-position = Vector2(388, -33)
-deathParticle = ExtResource("3_pmkls")
+[node name="EnemySpawner" parent="." instance=ExtResource("2_diauc")]
 
 [node name="Player" parent="." instance=ExtResource("1_g6r7u")]
 
