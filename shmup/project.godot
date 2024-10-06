@@ -28,6 +28,7 @@ project/assembly_name="Shmup"
 
 player_bullet=""
 enemy=""
+player_sprite=""
 
 [input]
 

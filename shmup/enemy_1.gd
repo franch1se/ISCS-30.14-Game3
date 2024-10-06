@@ -28,4 +28,3 @@ func kill():
 	get_tree().current_scene.add_child(_particle)
 	
 	queue_free()
-

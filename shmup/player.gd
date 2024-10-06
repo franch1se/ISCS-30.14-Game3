@@ -25,7 +25,9 @@ func _physics_process(delta: float) -> void:
 	crosshair.position = mouse_coor
 	crosshair.rotation = rotation
 	
-	move_and_slide()
+	var collide = move_and_collide(velocity*delta)
+	check_hp()
+	
 	position.x = clamp(position.x, -BORDER_LIMIT, BORDER_LIMIT)
 	position.y = clamp(position.y, -BORDER_LIMIT, BORDER_LIMIT)
 	
@@ -43,3 +45,12 @@ func move(dx, dy):
 		velocity.y = max(velocity.y - DEC_SPEED, 0)
 	elif velocity.y < 0:
 		velocity.y = min(velocity.y + DEC_SPEED, 0)
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemy"):
+		hp -=10
+		print(hp)
+
+func check_hp():
+	if hp <= 0:
+		queue_free()
