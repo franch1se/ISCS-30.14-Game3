@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dppxbfdqvfwbm"]
+
+[sub_resource type="Curve" id="Curve_tiy67"]
+_data = [Vector2(0.011236, 1), 0.0, 0.0, 0, 0, Vector2(0.578652, 0.549451), 0.0, 0.0, 0, 0, Vector2(0.988764, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
+use_parent_material = true
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(100, 100)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 500.0
+damping_max = 0.31
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_tiy67")
