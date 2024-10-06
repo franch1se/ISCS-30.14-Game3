@@ -4,7 +4,7 @@ extends Area2D
 @export var impact_scene : PackedScene = load("res://bullet_impact.tscn")
 @export var deathParticle : PackedScene = load("res://particles.tscn")
 
-var hp := 1
+@export var hp := 20
 
 func _ready() -> void:
 	pass # Replace with function body.
