@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 
 @export var impact_scene : PackedScene = load("res://bullet_impact.tscn")
@@ -11,27 +11,14 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	position.x -= delta*5 # to be deleted
+	
 	# Process hp
 	if hp <= 0:
 		# do some animations
 		kill()
 	
 	# Process movement
-	
-func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player_bullet"):
-		#print("Enemy hp: ", hp)
-		hp -= 1
-		var impact = impact_scene.instantiate()
-		impact.position = area.get_child(0).position
-		#print("AREA POS: ", area.get_child(0).position)
-		add_child(impact)
-		area.queue_free()
-		
-
-func _on_hitbox_body_entered(body: Node2D) -> void:
-	hp -= 1
-	
 
 func kill():
 	var _particle = deathParticle.instantiate()
@@ -41,3 +28,4 @@ func kill():
 	get_tree().current_scene.add_child(_particle)
 	
 	queue_free()
+

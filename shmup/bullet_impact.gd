@@ -4,7 +4,7 @@ extends AnimatedSprite2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	play("default")
-	
-func _process(delta: float) -> void:
-	if frame == 7:
-		queue_free()
+
+
+func _on_animation_finished() -> void:
+	queue_free()

@@ -27,6 +27,7 @@ project/assembly_name="Shmup"
 [global_group]
 
 player_bullet=""
+enemy=""
 
 [input]
 

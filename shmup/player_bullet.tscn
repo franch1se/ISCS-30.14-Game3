@@ -8,7 +8,7 @@ size = Vector2(6, 12)
 
 [node name="PlayerBullet" type="Area2D" groups=["player_bullet"]]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("1_xttku")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -19,4 +19,5 @@ shape = SubResource("RectangleShape2D_aec6k")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
