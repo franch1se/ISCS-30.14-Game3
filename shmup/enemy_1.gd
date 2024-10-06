@@ -6,7 +6,7 @@ extends Area2D
 @onready var explosionSFX = $explosionSFX
 
 
-var hp := 1
+@export var hp := 20
 
 func _ready() -> void:
 	pass # Replace with function body.

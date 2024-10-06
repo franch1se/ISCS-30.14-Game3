@@ -8,7 +8,7 @@ const NORMAL_SPEED = 30
 const DEC_SPEED = 20
 const BORDER_LIMIT = 470
 
-var hp = 100
+@export var hp = 100
 
 func _ready() -> void:
 	pass
@@ -48,7 +48,7 @@ func move(dx, dy):
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy"):
-		hp -=10
+		hp -= 10
 		print(hp)
 
 func check_hp():
