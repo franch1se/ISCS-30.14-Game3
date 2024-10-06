@@ -3,6 +3,8 @@ extends Area2D
 
 @export var impact_scene : PackedScene = load("res://bullet_impact.tscn")
 @export var deathParticle : PackedScene = load("res://particles.tscn")
+@onready var explosionSFX = $explosionSFX
+
 
 var hp := 1
 
@@ -26,5 +28,6 @@ func kill():
 	_particle.rotation = global_rotation
 	_particle.get_child(0).emitting = true
 	get_tree().current_scene.add_child(_particle)
+	explosionSFX.play()
 	
 	queue_free()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dus36y5c45x7i"]
+[gd_scene load_steps=5 format=3 uid="uid://dus36y5c45x7i"]
 
 [ext_resource type="Texture2D" uid="uid://diu7u3jyp2px0" path="res://ShmupSprites/Alien01.png" id="1_1kq7d"]
 [ext_resource type="Script" path="res://enemy_1.gd" id="1_bp65x"]
+[ext_resource type="AudioStream" uid="uid://ule226e67a1l" path="res://audio/explosionSFX.mp3" id="3_nk0wm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mk2ty"]
 size = Vector2(77, 94)
@@ -16,5 +17,10 @@ shape = SubResource("RectangleShape2D_mk2ty")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_1kq7d")
+
+[node name="explosionSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nk0wm")
+volume_db = -16.0
+pitch_scale = 2.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
