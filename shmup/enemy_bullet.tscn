@@ -42,7 +42,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmyxm"]
 radius = 7.07107
 
-[node name="EnemyBullet" type="Area2D"]
+[node name="EnemyBullet" type="Area2D" groups=["enemy_bullet"]]
 collision_layer = 8
 script = ExtResource("1_plb75")
 

@@ -17,5 +17,5 @@ func _on_area_entered(area: Area2D) -> void:
 		impact.global_position = global_position
 		impact.rotation = rotation - deg_to_rad(20)
 		get_parent().add_child(impact)
-		area.get_parent().hp -= 1
+		#area.get_parent().hp -= 1
 		queue_free()

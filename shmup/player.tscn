@@ -14,7 +14,7 @@ radius = 21.095
 [node name="Gun" type="Node2D" parent="."]
 script = ExtResource("4_3ei18")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["character"]]
 collision_mask = 28
 script = ExtResource("1_18pux")
 

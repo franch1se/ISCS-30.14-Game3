@@ -6,7 +6,9 @@ extends Area2D
 @onready var explosionSFX = $explosionSFX
 
 @export var bullet_scene : PackedScene = load("res://enemy_bullet.tscn")
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var bullet_timer : Timer = $BulletTimer
+@onready var healthbar: ProgressBar = $ProgressBar
 
 
 @export var hp := 50
@@ -17,11 +19,13 @@ var direction = 1
 
 func _ready() -> void:
 	bullet_timer.start()
+	healthbar.max_value = hp
+	healthbar.value = hp
 
 
 func _physics_process(delta: float) -> void:
 	position.x += speed*delta*direction
-	rotation += rot_speed*delta
+	sprite.rotation += rot_speed*delta
 	
 	# Process hp
 	if hp <= 0:
@@ -29,6 +33,9 @@ func _physics_process(delta: float) -> void:
 		kill()
 	
 	# Process movement
+	
+	healthbar.value = hp
+	healthbar.rotation_degrees = 0
 
 func kill():
 	var _particle = deathParticle.instantiate()

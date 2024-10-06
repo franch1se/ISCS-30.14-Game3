@@ -29,6 +29,9 @@ project/assembly_name="Shmup"
 player_bullet=""
 enemy=""
 player=""
+healthbar=""
+enemy_bullet=""
+character=""
 
 [input]
 

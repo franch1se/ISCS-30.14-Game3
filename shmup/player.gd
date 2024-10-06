@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 @onready var crosshair = $"../Crosshair"
+@onready var healthbar = get_tree().get_first_node_in_group("healthbar")
 
 const MAX_SPEED = 600 # for both x and y
 const NORMAL_SPEED = 30
@@ -50,6 +51,9 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy"):
 		hp -= 5
 		area.hp -= 10
+	if area.is_in_group("enemy_bullet"):
+		hp -= 5
+	healthbar.value = hp
 
 func check_hp():
 	if hp <= 0:
