@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkw73h3cmngrl"]
+[gd_scene load_steps=7 format=3 uid="uid://bkw73h3cmngrl"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_18pux"]
 [ext_resource type="Texture2D" uid="uid://b0n7pw58f38oe" path="res://ShmupSprites/Player.png" id="2_lk3qc"]
 [ext_resource type="Texture2D" uid="uid://d3uqlgw2x3xwm" path="res://ShmupSprites/crosshair158.png" id="3_i4og7"]
 [ext_resource type="Script" path="res://gun.gd" id="4_3ei18"]
+[ext_resource type="AudioStream" uid="uid://bxrhh4q66jlx0" path="res://audio/laserSFX.mp3" id="5_3kyrk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2mmns"]
 radius = 21.095
@@ -26,3 +27,8 @@ shape = SubResource("CircleShape2D_2mmns")
 [node name="Crosshair" type="Sprite2D" parent="."]
 position = Vector2(144, 4)
 texture = ExtResource("3_i4og7")
+
+[node name="laserSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3kyrk")
+volume_db = -16.0
+pitch_scale = 1.5
