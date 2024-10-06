@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://p0ith0ky4lb6"]
+[gd_scene load_steps=6 format=3 uid="uid://p0ith0ky4lb6"]
 
 [ext_resource type="PackedScene" uid="uid://dh2njt6yy7c3w" path="res://MARCUSMAP.tscn" id="1_eo2p6"]
 [ext_resource type="PackedScene" uid="uid://bkw73h3cmngrl" path="res://player.tscn" id="1_g6r7u"]
 [ext_resource type="PackedScene" uid="uid://coyb1jnfla7o0" path="res://enemy_spawner.tscn" id="2_diauc"]
+[ext_resource type="Script" path="res://camera_2d.gd" id="4_o3t2m"]
 [ext_resource type="PackedScene" uid="uid://bqr8g6isfm8nr" path="res://ui.tscn" id="4_sjef4"]
 
 [node name="Main" type="Node2D"]
@@ -14,5 +15,11 @@
 [node name="Player" parent="." instance=ExtResource("1_g6r7u")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+script = ExtResource("4_o3t2m")
+
+[node name="ShakeTime" type="Timer" parent="Player/Camera2D"]
+autostart = true
 
 [node name="UI" parent="." instance=ExtResource("4_sjef4")]
+
+[connection signal="timeout" from="Player/Camera2D/ShakeTime" to="Player/Camera2D" method="_on_shake_time_timeout"]

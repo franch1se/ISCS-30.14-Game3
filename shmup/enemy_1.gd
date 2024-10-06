@@ -30,6 +30,7 @@ func _physics_process(delta: float) -> void:
 	# Process hp
 	if hp <= 0:
 		# do some animations
+		Global.camera.screen_shake(3, 3, 0.05)
 		kill()
 	
 	# Process movement
