@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @onready var crosshair = $"../Crosshair"
 @onready var healthbar = get_tree().get_first_node_in_group("healthbar")
+@export var deathParticle : PackedScene = load("res://particles.tscn")
 
 const MAX_SPEED = 600 # for both x and y
 const NORMAL_SPEED = 30
@@ -57,4 +58,9 @@ func _on_area_entered(area: Area2D) -> void:
 
 func check_hp():
 	if hp <= 0:
+		var _particle = deathParticle.instantiate()
+		_particle.position = global_position
+		_particle.rotation = global_rotation
+		_particle.get_child(0).emitting = true
+		get_tree().current_scene.add_child(_particle)
 		queue_free()
