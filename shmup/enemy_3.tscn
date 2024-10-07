@@ -1,31 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://dus36y5c45x7i"]
+[gd_scene load_steps=4 format=3 uid="uid://saandi4k6y8u"]
 
-[ext_resource type="Texture2D" uid="uid://diu7u3jyp2px0" path="res://ShmupSprites/Alien01.png" id="1_1kq7d"]
-[ext_resource type="Script" path="res://enemy_1.gd" id="1_bp65x"]
-[ext_resource type="AudioStream" uid="uid://ule226e67a1l" path="res://audio/explosionSFX.mp3" id="3_nk0wm"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mk2ty"]
-size = Vector2(77, 94)
+[ext_resource type="Script" path="res://enemy_3.gd" id="1_8oepv"]
+[ext_resource type="Texture2D" uid="uid://uld36ontxwgk" path="res://ShmupSprites/Alien03.png" id="2_0x5hh"]
+[ext_resource type="AudioStream" uid="uid://ule226e67a1l" path="res://audio/explosionSFX.mp3" id="3_c41p5"]
 
 [node name="Hitbox" type="Area2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 3
-script = ExtResource("1_bp65x")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_mk2ty")
+script = ExtResource("1_8oepv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_1kq7d")
+texture = ExtResource("2_0x5hh")
 
 [node name="explosionSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_nk0wm")
+stream = ExtResource("3_c41p5")
 volume_db = -16.0
 pitch_scale = 2.0
-
-[node name="BulletTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
@@ -43,6 +33,8 @@ grow_horizontal = 2
 grow_vertical = 2
 show_percentage = false
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-55, -45, 54, -45, 1, 51)
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="timeout" from="BulletTimer" to="." method="_on_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

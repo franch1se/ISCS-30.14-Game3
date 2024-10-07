@@ -8,24 +8,22 @@ extends Area2D
 @export var bullet_scene : PackedScene = load("res://enemy_bullet.tscn")
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("character")
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var bullet_timer : Timer = $BulletTimer
 @onready var healthbar: ProgressBar = $ProgressBar
 
 
 @export var hp := 50
-var speed := 80.0
-var rot_speed := 3.0
+var speed := 200.0
+var rot_speed := 10.0
 var bullet_count := 18
 var direction = 1
 
 func _ready() -> void:
-	bullet_timer.start()
 	healthbar.max_value = hp
 	healthbar.value = hp
 
-
 func _physics_process(delta: float) -> void:
 	position.x += speed*delta*direction
+	position.y -= speed*delta*direction
 	sprite.rotation += rot_speed*delta
 	
 	# Process hp
@@ -49,17 +47,6 @@ func kill():
 	player.add_kill()
 	
 	queue_free()
-
-
-func _on_timer_timeout() -> void:
-	#print("BOOM BULLET")
-	for i in range(bullet_count):
-		var bullet = bullet_scene.instantiate()
-		bullet.position = global_position
-		bullet.rotation = deg_to_rad(i*(360/bullet_count))
-		get_parent().add_child(bullet)
-		bullet_timer.start()
-
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()

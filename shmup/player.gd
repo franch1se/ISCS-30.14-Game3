@@ -4,16 +4,21 @@ extends CharacterBody2D
 @onready var crosshair = $"../Crosshair"
 @onready var healthbar = get_tree().get_first_node_in_group("healthbar")
 @export var deathParticle : PackedScene = load("res://particles.tscn")
+@onready var spawner = get_tree().get_first_node_in_group("spawner")
 
 const MAX_SPEED = 600 # for both x and y
 const NORMAL_SPEED = 30
 const DEC_SPEED = 20
 const BORDER_LIMIT = 470
 
-@export var hp = 25
+const max_hp = 50
+var hp = max_hp
+var kill_count
 
 func _ready() -> void:
-	pass
+	kill_count = 0
+	healthbar.value = hp
+	healthbar.max_value = max_hp
 
 func _physics_process(delta: float) -> void:
 	# Handle movement
@@ -27,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	crosshair.position = mouse_coor
 	crosshair.rotation = rotation
 	
-	var collide = move_and_collide(velocity*delta)
+	move_and_slide()
 	check_hp()
 	
 	position.x = clamp(position.x, -BORDER_LIMIT, BORDER_LIMIT)
@@ -54,6 +59,10 @@ func _on_area_entered(area: Area2D) -> void:
 		area.hp -= 10
 	if area.is_in_group("enemy_bullet"):
 		hp -= 5
+	if area.is_in_group("coins"):
+		if (hp + area.value) <= max_hp: 
+			hp += 10
+			area.queue_free()
 	healthbar.value = hp
 
 func check_hp():
@@ -64,3 +73,9 @@ func check_hp():
 		_particle.get_child(0).emitting = true
 		get_tree().current_scene.add_child(_particle)
 		queue_free()
+		
+func add_kill():
+	kill_count += 1
+	print(kill_count)
+	if kill_count%2 == 0:
+		spawner.spawn_coin()

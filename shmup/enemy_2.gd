@@ -53,10 +53,9 @@ func kill():
 
 func _on_timer_timeout() -> void:
 	#print("BOOM BULLET")
-	for i in range(bullet_count):
 		var bullet = bullet_scene.instantiate()
 		bullet.position = global_position
-		bullet.rotation = deg_to_rad(i*(360/bullet_count))
+		bullet.rotation = sprite.rotation
 		get_parent().add_child(bullet)
 		bullet_timer.start()
 
