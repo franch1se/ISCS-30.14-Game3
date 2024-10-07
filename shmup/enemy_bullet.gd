@@ -1,8 +1,12 @@
 extends Area2D
 
 @export var impact_scene : PackedScene = load("res://bullet_impact.tscn")
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var SPEED := 500.0
+
+func _ready() -> void:
+	animated_sprite_2d.play()
 
 func _physics_process(delta: float) -> void:
 	var motion := -transform.y * SPEED * delta
