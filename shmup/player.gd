@@ -11,7 +11,7 @@ const NORMAL_SPEED = 30
 const DEC_SPEED = 20
 const BORDER_LIMIT = 470
 
-const max_hp = 50
+const max_hp = 100
 var hp = max_hp
 var kill_count = 0
 var score = 0
@@ -61,8 +61,8 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy_bullet"):
 		hp -= 5
 	if area.is_in_group("coins"):
-		if (hp + area.value) <= max_hp: 
-			hp += 10
+		if hp < max_hp: 
+			hp = min(max_hp, hp + 10)
 			area.queue_free()
 	healthbar.value = hp
 
@@ -77,12 +77,12 @@ func check_hp():
 		
 func add_kill(enemy_type):
 	kill_count += 1
-	if kill_count%4 == 0:
+	if kill_count%3 == 0:
 		spawner.spawn_coin()
 	
 	if enemy_type == 0:
-		score += 100
+		score += 100*spawner.difficulty
 	elif enemy_type == 1:
-		score += 150
+		score += 150*spawner.difficulty
 	elif enemy_type == 2:
-		score += 200
+		score += 200*spawner.difficulty

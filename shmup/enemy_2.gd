@@ -26,6 +26,9 @@ func _physics_process(delta: float) -> void:
 	position.x += speed*delta*direction
 	sprite.rotation += rot_speed*delta
 	
+	bullet_timer.wait_time = max(0.05, 0.1 - 0.01*(get_parent().difficulty-1))
+
+	
 	# Process hp
 	if hp <= 0:
 		# do some animations

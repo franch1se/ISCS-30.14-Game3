@@ -30,8 +30,7 @@ offset_right = -250.0
 offset_bottom = -425.0
 theme_override_styles/background = SubResource("StyleBoxFlat_b8wl2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_3a0la")
-max_value = 50.0
-value = 50.0
+value = 100.0
 allow_lesser = true
 show_percentage = false
 
