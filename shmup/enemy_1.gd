@@ -45,7 +45,7 @@ func kill():
 	_particle.rotation = global_rotation
 	_particle.get_child(0).emitting = true
 	get_tree().current_scene.add_child(_particle)
-	player.add_kill()
+	player.add_kill(enemy_type)
 	get_parent().enemy_killed.emit(enemy_type)
 	
 	queue_free()

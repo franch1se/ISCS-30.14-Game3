@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqr8g6isfm8nr"]
+[gd_scene load_steps=5 format=3 uid="uid://bqr8g6isfm8nr"]
+
+[ext_resource type="Texture2D" uid="uid://wnmo3pudt85a" path="res://ShmupSprites/Background_ingame.png" id="1_fpcry"]
+[ext_resource type="Script" path="res://score_ui.gd" id="2_ncvut"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8wl2"]
 bg_color = Color(0, 0, 0, 1)
@@ -16,6 +19,10 @@ corner_radius_bottom_left = 8
 
 [node name="Node2D" type="Node2D"]
 
+[node name="[DISABLE] BackgroundIngame" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_fpcry")
+
 [node name="HealthBar" type="ProgressBar" parent="." groups=["healthbar"]]
 offset_left = -450.0
 offset_top = -450.0
@@ -27,3 +34,12 @@ max_value = 50.0
 value = 50.0
 allow_lesser = true
 show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 204.0
+offset_top = -455.0
+offset_right = 782.0
+offset_bottom = -415.0
+theme_override_font_sizes/normal_font_size = 21
+text = "Score: "
+script = ExtResource("2_ncvut")

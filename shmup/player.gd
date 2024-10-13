@@ -13,7 +13,8 @@ const BORDER_LIMIT = 470
 
 const max_hp = 50
 var hp = max_hp
-var kill_count
+var kill_count = 0
+var score = 0
 
 func _ready() -> void:
 	kill_count = 0
@@ -74,8 +75,14 @@ func check_hp():
 		get_tree().current_scene.add_child(_particle)
 		queue_free()
 		
-func add_kill():
+func add_kill(enemy_type):
 	kill_count += 1
-	print(kill_count)
-	if kill_count%2 == 0:
+	if kill_count%4 == 0:
 		spawner.spawn_coin()
+	
+	if enemy_type == 0:
+		score += 100
+	elif enemy_type == 1:
+		score += 150
+	elif enemy_type == 2:
+		score += 200
