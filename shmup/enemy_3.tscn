@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://saandi4k6y8u"]
+[gd_scene load_steps=3 format=3 uid="uid://saandi4k6y8u"]
 
 [ext_resource type="Script" path="res://enemy_3.gd" id="1_8oepv"]
 [ext_resource type="Texture2D" uid="uid://uld36ontxwgk" path="res://ShmupSprites/Alien03.png" id="2_0x5hh"]
-[ext_resource type="AudioStream" uid="uid://ule226e67a1l" path="res://audio/explosionSFX.mp3" id="3_c41p5"]
 
 [node name="Hitbox" type="Area2D" groups=["enemy"]]
 collision_layer = 4
@@ -11,11 +10,6 @@ script = ExtResource("1_8oepv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_0x5hh")
-
-[node name="explosionSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_c41p5")
-volume_db = -16.0
-pitch_scale = 2.0
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

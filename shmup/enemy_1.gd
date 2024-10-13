@@ -3,7 +3,6 @@ extends Area2D
 
 @export var impact_scene : PackedScene = load("res://bullet_impact.tscn")
 @export var deathParticle : PackedScene = load("res://particles.tscn")
-@onready var explosionSFX = $explosionSFX
 
 @export var bullet_scene : PackedScene = load("res://enemy_bullet.tscn")
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("character")
@@ -11,7 +10,7 @@ extends Area2D
 @onready var bullet_timer : Timer = $BulletTimer
 @onready var healthbar: ProgressBar = $ProgressBar
 
-
+@export var enemy_type = 0
 @export var hp := 50
 var speed := 80.0
 var rot_speed := 3.0
@@ -22,6 +21,7 @@ func _ready() -> void:
 	bullet_timer.start()
 	healthbar.max_value = hp
 	healthbar.value = hp
+	shoot()
 
 
 func _physics_process(delta: float) -> void:
@@ -45,20 +45,22 @@ func kill():
 	_particle.rotation = global_rotation
 	_particle.get_child(0).emitting = true
 	get_tree().current_scene.add_child(_particle)
-	explosionSFX.play()
 	player.add_kill()
+	get_parent().enemy_killed.emit(enemy_type)
 	
 	queue_free()
 
-
-func _on_timer_timeout() -> void:
-	#print("BOOM BULLET")
+func shoot():
 	for i in range(bullet_count):
 		var bullet = bullet_scene.instantiate()
 		bullet.position = global_position
 		bullet.rotation = deg_to_rad(i*(360/bullet_count))
 		get_parent().add_child(bullet)
 		bullet_timer.start()
+
+func _on_timer_timeout() -> void:
+	shoot()
+	
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:

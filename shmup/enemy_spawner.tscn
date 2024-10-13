@@ -8,4 +8,5 @@ script = ExtResource("1_fc3ww")
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
 
+[connection signal="enemy_killed" from="." to="." method="_on_enemy_killed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

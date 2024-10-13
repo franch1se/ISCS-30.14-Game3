@@ -4,6 +4,7 @@ extends Node2D
 @export var enemy2 : PackedScene = load("res://enemy_2.tscn")
 @export var enemy3 : PackedScene = load("res://enemy_3.tscn")
 @export var coins: PackedScene = load("res://coins.tscn")
+@export var explosion_sfx: PackedScene = load("res://explosion_sfx.tscn")
 @onready var spawn_timer: Timer = $SpawnTimer
 
 const SPAWN_X := 850.0
@@ -11,6 +12,8 @@ const SPAWN_Y := 480.0
 const ENEMY_TYPES = 3
 
 var enemy_i = 0
+
+signal enemy_killed(enemy_type)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -54,3 +57,8 @@ func spawn_coin():
 func _on_spawn_timer_timeout() -> void:
 	spawn(enemy_i)
 	enemy_i = (enemy_i + 1) % ENEMY_TYPES
+
+
+func _on_enemy_killed(enemy_type: Variant) -> void:
+	var sfx = explosion_sfx.instantiate()
+	add_child(sfx)

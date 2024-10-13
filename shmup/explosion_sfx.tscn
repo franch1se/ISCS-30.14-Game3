@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7x16xm0a0l4c"]
+
+[ext_resource type="AudioStream" uid="uid://ule226e67a1l" path="res://audio/explosionSFX.mp3" id="1_sf6u0"]
+[ext_resource type="Script" path="res://explosion_sfx.gd" id="2_3dqy0"]
+
+[node name="explosionSFX" type="AudioStreamPlayer"]
+stream = ExtResource("1_sf6u0")
+volume_db = -16.0
+pitch_scale = 2.0
+autoplay = true
+script = ExtResource("2_3dqy0")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
