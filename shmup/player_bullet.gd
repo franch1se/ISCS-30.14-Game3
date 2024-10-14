@@ -19,7 +19,3 @@ func _on_area_entered(area: Area2D) -> void:
 		get_parent().add_child(impact)
 		area.hp -= 1
 		queue_free()
-	#if area.is_in_group("coins"):
-		#print('yes')
-		#queue_free()
-		#area.queue_free()

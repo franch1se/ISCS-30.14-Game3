@@ -48,11 +48,11 @@ func spawn(enemy_index):
 		for i in range(2):
 			var enemy3 = enemy3.instantiate()
 			if i%2 == 0:
-				enemy3.position.x = SPAWN_X
+				enemy3.position.x = 500
 				enemy3.position.y = -450
 				enemy3.direction = -1
 			else:
-				enemy3.position.x = -SPAWN_X
+				enemy3.position.x = -500
 				enemy3.position.y = 450
 				enemy3.direction = 1
 			enemy3.hp += difficulty*10

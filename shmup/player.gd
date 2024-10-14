@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var healthbar = get_tree().get_first_node_in_group("healthbar")
 @export var deathParticle : PackedScene = load("res://particles.tscn")
 @onready var spawner = get_tree().get_first_node_in_group("spawner")
+@export var impact_scene : PackedScene = load("res://bullet_impact.tscn")
 
 const MAX_SPEED = 600 # for both x and y
 const NORMAL_SPEED = 30
@@ -63,8 +64,10 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy"):
 		hp -= 5
 		area.hp -= 10
+		Global.camera.screen_shake(3, 3, 0.05)
 	if area.is_in_group("enemy_bullet"):
 		hp -= 5
+		var impact = impact_scene.instantiate()
 	if area.is_in_group("coins"):
 		if hp < max_hp: 
 			hp = min(max_hp, hp + 10)
