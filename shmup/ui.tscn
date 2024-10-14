@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqr8g6isfm8nr"]
+[gd_scene load_steps=6 format=3 uid="uid://bqr8g6isfm8nr"]
 
 [ext_resource type="Texture2D" uid="uid://wnmo3pudt85a" path="res://ShmupSprites/Background_ingame.png" id="1_fpcry"]
 [ext_resource type="Script" path="res://score_ui.gd" id="2_ncvut"]
+[ext_resource type="Script" path="res://dead_ui.gd" id="3_353q7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8wl2"]
 bg_color = Color(0, 0, 0, 1)
@@ -42,3 +43,43 @@ offset_bottom = -415.0
 theme_override_font_sizes/normal_font_size = 21
 text = "Score: "
 script = ExtResource("2_ncvut")
+
+[node name="DeadUI" type="Node2D" parent="."]
+script = ExtResource("3_353q7")
+
+[node name="ColorRect" type="ColorRect" parent="DeadUI"]
+offset_left = -798.0
+offset_top = -516.0
+offset_right = 802.0
+offset_bottom = 513.0
+color = Color(0, 0, 0, 0.529412)
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="DeadUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -82.0
+offset_right = 202.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 72
+text = "u ded haha"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="DeadUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = 7.0
+offset_right = 422.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 48
+text = "press R to restart"

@@ -22,6 +22,11 @@ func _ready() -> void:
 	healthbar.max_value = max_hp
 
 func _physics_process(delta: float) -> void:
+	check_hp()
+	if hp <= 0:
+		if Input.is_action_just_pressed("restart"):
+			get_tree().reload_current_scene()
+		return
 	# Handle movement
 	var direction_x = Input.get_axis("left", "right")
 	var direction_y = Input.get_axis("up", "down")
@@ -34,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	crosshair.rotation = rotation
 	
 	move_and_slide()
-	check_hp()
+	
 	
 	position.x = clamp(position.x, -BORDER_LIMIT, BORDER_LIMIT)
 	position.y = clamp(position.y, -BORDER_LIMIT, BORDER_LIMIT)
@@ -73,7 +78,8 @@ func check_hp():
 		_particle.rotation = global_rotation
 		_particle.get_child(0).emitting = true
 		get_tree().current_scene.add_child(_particle)
-		queue_free()
+		visible = false
+		#queue_free()
 		
 func add_kill(enemy_type):
 	kill_count += 1

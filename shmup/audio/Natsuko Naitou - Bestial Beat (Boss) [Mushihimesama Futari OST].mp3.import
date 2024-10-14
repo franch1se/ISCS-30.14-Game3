@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://doojoqmo3l6l5"
+path="res://.godot/imported/Natsuko Naitou - Bestial Beat (Boss) [Mushihimesama Futari OST].mp3-56bd394925474b8941f9fd85f13c6630.mp3str"
+
+[deps]
+
+source_file="res://audio/Natsuko Naitou - Bestial Beat (Boss) [Mushihimesama Futari OST].mp3"
+dest_files=["res://.godot/imported/Natsuko Naitou - Bestial Beat (Boss) [Mushihimesama Futari OST].mp3-56bd394925474b8941f9fd85f13c6630.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

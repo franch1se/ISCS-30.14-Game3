@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://p0ith0ky4lb6"]
+[gd_scene load_steps=9 format=3 uid="uid://p0ith0ky4lb6"]
 
 [ext_resource type="PackedScene" uid="uid://dh2njt6yy7c3w" path="res://MARCUSMAP.tscn" id="1_eo2p6"]
 [ext_resource type="PackedScene" uid="uid://bkw73h3cmngrl" path="res://player.tscn" id="1_g6r7u"]
 [ext_resource type="PackedScene" uid="uid://coyb1jnfla7o0" path="res://enemy_spawner.tscn" id="2_diauc"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="4_o3t2m"]
 [ext_resource type="PackedScene" uid="uid://bqr8g6isfm8nr" path="res://ui.tscn" id="4_sjef4"]
+[ext_resource type="Script" path="res://effects_group.gd" id="6_dnqxa"]
+[ext_resource type="AudioStream" uid="uid://doojoqmo3l6l5" path="res://audio/Natsuko Naitou - Bestial Beat (Boss) [Mushihimesama Futari OST].mp3" id="6_pgkcv"]
+[ext_resource type="AudioStream" uid="uid://dnlh7ib8p16cn" path="res://audio/LOSER SOUND EFFECTS.mp3" id="7_u6q47"]
 
 [node name="Main" type="Node2D"]
 
@@ -21,5 +24,17 @@ script = ExtResource("4_o3t2m")
 autostart = true
 
 [node name="UI" parent="." instance=ExtResource("4_sjef4")]
+
+[node name="Effects Group" type="Node2D" parent="."]
+script = ExtResource("6_dnqxa")
+
+[node name="LoserSoundEffects" type="AudioStreamPlayer" parent="Effects Group"]
+stream = ExtResource("7_u6q47")
+
+[node name="NatsukoNaitou-BestialBeat(boss)[mushihimesamaFutariOst]" type="AudioStreamPlayer" parent="Effects Group"]
+stream = ExtResource("6_pgkcv")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="timeout" from="Player/Camera2D/ShakeTime" to="Player/Camera2D" method="_on_shake_time_timeout"]
